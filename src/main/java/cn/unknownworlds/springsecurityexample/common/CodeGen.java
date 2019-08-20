@@ -100,7 +100,7 @@ public class CodeGen {
 //        strategyConfig.setSuperServiceImplClass();
 //        strategyConfig.setSuperControllerClass();
 //         strategyConfig.setInclude("permission", "role", "role_permission", "user", "user_role");
-//        strategyConfig.setInclude("employee_example");
+        strategyConfig.setInclude("persistent_logins");
 //        strategyConfig.setExclude();
         strategyConfig.setEntityColumnConstant(true);
         strategyConfig.setEntityBuilderModel(true);
