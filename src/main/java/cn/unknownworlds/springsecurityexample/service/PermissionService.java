@@ -3,6 +3,8 @@ package cn.unknownworlds.springsecurityexample.service;
 import cn.unknownworlds.springsecurityexample.entity.PermissionModel;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -13,4 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface PermissionService extends IService<PermissionModel> {
 
+    List<PermissionModel> selectByRoleId(Integer roleId);
 }

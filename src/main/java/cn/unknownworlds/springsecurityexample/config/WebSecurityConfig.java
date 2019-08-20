@@ -2,6 +2,7 @@ package cn.unknownworlds.springsecurityexample.config;
 
 import cn.unknownworlds.springsecurityexample.filter.VerifyFilter;
 import cn.unknownworlds.springsecurityexample.security.CustomAuthenticationProvider;
+import cn.unknownworlds.springsecurityexample.security.CustomPermissionEvaluator;
 import cn.unknownworlds.springsecurityexample.service.impl.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
@@ -53,6 +55,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         tokenRepository.setDataSource(dataSource);
         return tokenRepository;
     }
+
+
+    @Bean
+    public DefaultWebSecurityExpressionHandler webSecurityExpressionHandler(){
+        DefaultWebSecurityExpressionHandler handler = new DefaultWebSecurityExpressionHandler();
+        handler.setPermissionEvaluator(new CustomPermissionEvaluator());
+        return handler;
+    }
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

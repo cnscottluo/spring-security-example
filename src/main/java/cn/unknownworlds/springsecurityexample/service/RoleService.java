@@ -14,4 +14,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface RoleService extends IService<RoleModel> {
 
     RoleModel selectById(Integer roleId);
+
+    RoleModel selectByName(String roleName);
 }
