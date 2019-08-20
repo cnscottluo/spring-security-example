@@ -25,7 +25,7 @@ public class CodeGen {
          */
         GlobalConfig globalConfig = new GlobalConfig();
         // String projectPath = System.getProperty("user.dir");
-         String projectPath = "D:\\code";
+        String projectPath = "D:\\code";
         //String projectPath = "/Volumes/Samsung_T5/work/yngishere/yngishere-admin/yngishere-admin-server";
         globalConfig.setOutputDir(projectPath + "/src/main/java");
         globalConfig.setAuthor("scottluo");
@@ -53,8 +53,8 @@ public class CodeGen {
             public void initMap() {
                 Map<String, Object> map = new HashMap<>();
                 map.put("abc", this.getConfig()
-                                   .getGlobalConfig()
-                                   .getAuthor() + "-mp");
+                        .getGlobalConfig()
+                        .getAuthor() + "-mp");
                 this.setMap(map);
             }
         };
@@ -100,7 +100,7 @@ public class CodeGen {
 //        strategyConfig.setSuperServiceImplClass();
 //        strategyConfig.setSuperControllerClass();
 //         strategyConfig.setInclude("permission", "role", "role_permission", "user", "user_role");
-        strategyConfig.setInclude("persistent_logins");
+        strategyConfig.setInclude("sys_permission");
 //        strategyConfig.setExclude();
         strategyConfig.setEntityColumnConstant(true);
         strategyConfig.setEntityBuilderModel(true);
