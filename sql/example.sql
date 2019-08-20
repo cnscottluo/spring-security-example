@@ -11,11 +11,35 @@
  Target Server Version : 80017
  File Encoding         : 65001
 
- Date: 20/08/2019 16:39:07
+ Date: 20/08/2019 18:07:48
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for persistent_logins
+-- ----------------------------
+DROP TABLE IF EXISTS `persistent_logins`;
+CREATE TABLE `persistent_logins`  (
+  `username` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `series` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `token` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `last_used` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
+  PRIMARY KEY (`series`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for sys_permission
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_permission`;
+CREATE TABLE `sys_permission`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `role_id` int(11) NULL DEFAULT NULL,
+  `permission` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for sys_role
