@@ -7,6 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @ClassName LoginController
  * @Description TODO
@@ -17,6 +21,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @Slf4j
 public class LoginController {
+
+    @RequestMapping("/sms/code")
+    @ResponseBody
+    public void sms(String mobile, HttpSession session) {
+        int code = (int) Math.ceil(Math.random() * 9000 + 1000);
+
+        Map<String, Object> map = new HashMap<>(16);
+        map.put("mobile", mobile);
+        map.put("code", code);
+
+        session.setAttribute("smsCode", map);
+
+        log.info("{}：为 {} 设置短信验证码：{}", session.getId(), mobile, code);
+    }
 
     @RequestMapping("/")
     public String showHome() {

@@ -1,4 +1,4 @@
-package cn.unknownworlds.springsecurityexample.service.impl;
+package cn.unknownworlds.springsecurityexample.security;
 
 import cn.unknownworlds.springsecurityexample.entity.RoleModel;
 import cn.unknownworlds.springsecurityexample.entity.UserModel;
@@ -20,14 +20,14 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * @ClassName CustomUserDetailsService
+ * @ClassName SmsUserDetailsService
  * @Description TODO
  * @Author Administrator
- * @Date 2019/8/20 0020 下午 16:10
+ * @Date 2019/8/21 0021 上午 9:48
  * @Version 1.0
  */
-@Service
-public class CustomUserDetailsService implements UserDetailsService {
+@Service("smsUserDetailsService")
+public class SmsUserDetailsService implements UserDetailsService {
 
     @Autowired
     private UserService userService;
@@ -39,11 +39,10 @@ public class CustomUserDetailsService implements UserDetailsService {
     private UserRoleService userRoleService;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
+    public UserDetails loadUserByUsername(String phone) throws UsernameNotFoundException {
         Collection<GrantedAuthority> authorities = new ArrayList<>();
         // 从数据库中取出用户信息
-        UserModel user = userService.selectByName(username);
+        UserModel user = userService.selectByPhone(phone);
 
         // 判断用户是否存在
         if(user == null) {

@@ -14,4 +14,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface UserService extends IService<UserModel> {
 
     UserModel selectByName(String username);
+
+    UserModel selectByPhone(String phone);
 }

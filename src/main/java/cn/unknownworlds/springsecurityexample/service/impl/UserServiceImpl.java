@@ -28,4 +28,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserModel> implemen
         queryWrapper.lambda().eq(UserModel::getName, username);
         return this.userMapper.selectOne(queryWrapper);
     }
+
+    @Override
+    public UserModel selectByPhone(String phone) {
+        QueryWrapper<UserModel> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(UserModel::getPhone, phone);
+        return this.userMapper.selectOne(queryWrapper);
+    }
 }

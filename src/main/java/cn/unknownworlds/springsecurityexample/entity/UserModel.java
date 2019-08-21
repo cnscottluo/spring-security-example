@@ -35,12 +35,17 @@ public class UserModel extends Model<UserModel> {
     @TableField("password")
     private String password;
 
+    @TableField("phone")
+    private String phone;
+
 
     public static final String ID = "id";
 
     public static final String NAME = "name";
 
     public static final String PASSWORD = "password";
+
+    public static final String PHONE = "phone";
 
     @Override
     protected Serializable pkVal() {
